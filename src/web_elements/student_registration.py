@@ -26,7 +26,6 @@ state = 'NCR'
 city = 'Delhi'
 
 # Automation Test steps
-# Enter name, last name, email,
 print("# Google search manual test cases ( needs to be automated)")
 print("# Launch the Chrome browser")
 
@@ -38,6 +37,20 @@ driver = webdriver.Chrome(options=chr_options)
 print('maximizing the browser window')
 driver.maximize_window()
 time.sleep(1)
+
+print("# Open the student registration form.")
+driver.get(host)
+print("Zoom the page to 55 %")
+driver.execute_script("document.body.style.zoom='55%'")
+
+print("# Enter name, last name, email,")
+fname_input = driver.find_element(By.ID, 'firstName')
+fname_input.send_keys('djvdkvddklv')
+time.sleep(2)
+fname_input.clear()
+fname_input.send_keys(fname)
+
+
 # Enter Mobile, Subjects, current address
 # Select Gender: Male (radio buttons)
 # Select/Enter DOB
