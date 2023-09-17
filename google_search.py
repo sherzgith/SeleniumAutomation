@@ -26,7 +26,7 @@ time.sleep(1)
 
 print("# Open the google.com page")
 driver.get(host)
-# time.sleep(1)dsc
+# time.sleep(1)
 
 print("# search for 'ai' and hit enter")
 # identifier used to search that element from HTML document
