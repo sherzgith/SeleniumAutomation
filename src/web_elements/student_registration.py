@@ -74,13 +74,23 @@ driver.find_element(By.XPATH, mobile_xpath).send_keys(mobile_num)
 time.sleep(5)
 print('Entering the subject ')
 driver.find_element(By.XPATH, '//input[@id="subjectsInput"]').send_keys(subjects)
-time.sleep(5)
-
 
 
 # Select Gender: Male (radio buttons)
+
+
 # Select/Enter DOB
+
+
 # Select Checkboxes ( multi select)
+sports_css_selector = 'input#hobbies-checkbox-1'
+reading_css_selector = 'input#hobbies-checkbox-2'
+music_css_selector = 'input#hobbies-checkbox-3'
+driver.find_element(By.CSS_SELECTOR, sports_css_selector).click()
+driver.find_element(By.CSS_SELECTOR, reading_css_selector).click()
+driver.find_element(By.CSS_SELECTOR, music_css_selector).click()
+time.sleep(5)
+
 # picture upload ( input, type=file)
 # Select State(first), then select City (Click the visible container)
 print('*************COMPLETED, Closing the BROWSER!!!!')
