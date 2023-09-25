@@ -17,7 +17,7 @@ driver = webdriver.Chrome(options=chr_options)
 # driver = webdriver.Chrome()
 print('maximizing the browser window')
 driver.maximize_window()
-driver.implicitly_wait(10)
+driver.implicitly_wait(10)  # default timeout to find the element
 
 
 print("# open the host, name (name of the browser)")
@@ -45,10 +45,20 @@ print("# get current_url, title")
 first_url = driver.current_url
 print(f'Title: {driver.title}\nFirst Page URL: {first_url}')
 time.sleep(5)
-print('-------------------------------------------------')
 print("# get current_window_handle and save in a variable")
+tab1_handle = driver.current_window_handle
+print(f'tab1 handle: {tab1_handle}')
 print("# click on New Tab button, this will open new tab")
-print("# get window_handles")
+new_tab_button = driver.find_element(By.CSS_SELECTOR, '#tabButton')
+new_tab_button.click()
+time.sleep(2)
+print("# get window_handles and save it in a list variable")
+handles = driver.window_handles # this is the list of IDs
+print(f'window handles : {handles}')
+tab2_handle = handles[1]
+assert handles[0] == tab1_handle, "Error: tab1 handle verification failed."
+
+print('-------------------------------------------------')
 print("# switch to new tab")
 print("# get the current_url and title")
 print("# verify that url is different from first url")
@@ -56,6 +66,7 @@ print("# close the tab with driver.close()")
 print("# switch to main tab")
 print("# get current_url and verify that it is the same as first url")
 print("# close the whole browser (all tabs) -> driver.quit()")
+driver.close()
 
 
 
