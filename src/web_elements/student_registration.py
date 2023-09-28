@@ -25,7 +25,9 @@ mobile_num = '7024097877'
 gender = 'Male'
 dob = '01/01/2000'
 subjects = 'john doe registry form'
-picture_path = '../../data/Lionel-Messi-PNG-Picture.png'
+# picture_path = '../../data/Lionel-Messi-PNG-Picture.png'
+# picture_path = 'C:\dev\SeleniumAutomation\data\Lionel-Messi-PNG-Picture.png'
+picture_path = ROOT_DIR + '\data\Lionel-Messi-PNG-Picture.png'
 state = 'NCR'
 city = 'Delhi'
 
@@ -45,6 +47,10 @@ music_xpath = '//input[@id="hobbies-checkbox-3"]/..'
 # music_css_selector = 'input#hobbies-checkbox-3'
 month_select_xpath = '//select[@class="react-datepicker__month-select"]'
 year_select_xpath = '//select[@class="react-datepicker__year-select"]'
+# Element : <input id="uploadPicture" type="file" lang="en" class="form-control-file">
+upload_picture_xpath = '//input[@id="uploadPicture"]'
+submit_xpath = '//button[@id="submit"]'
+
 
 # Automation Test steps
 print("# Google search manual test cases ( needs to be automated)")
@@ -102,7 +108,7 @@ print(f"Is male gender selected-After: {male_box.is_selected()}")
 print("#6 Enter Mobile, Subjects, current address")
 print('Entering the mobile number')
 driver.find_element(By.XPATH, mobile_xpath).send_keys(mobile_num)
-time.sleep(5)
+time.sleep(0.5)
 print('Entering the subject ')
 driver.find_element(By.XPATH, '//input[@id="subjectsInput"]').send_keys(subjects)
 
@@ -124,7 +130,6 @@ day = '027'  # always pass 3 digits, with leading zeros if needed
 day_xpath = f"//div[contains(@class, 'react-datepicker__day--{day}') and not(contains(@class, 'outside-month'))]"
 driver.find_element(By.XPATH, day_xpath).click()
 
-time.sleep(10)
 
 print("#8 Select Hobbies Checkboxes ( multi select)")
 sport_checkbox = driver.find_element(By.XPATH, sports_xpath)
@@ -136,17 +141,24 @@ print(f"Is sport selected-after: {sport_input.is_selected()}")
 
 driver.find_element(By.XPATH, reading_xpath).click()
 driver.find_element(By.XPATH, music_xpath).click()
-time.sleep(0.5)
 
-# 9 picture upload ( input, type=file)
+
+print("# 9 picture upload ( input, type=file)")
+select_picture = driver.find_element(By.XPATH, upload_picture_xpath)
+print(f"File absolute path: '{picture_path}'")
+select_picture.send_keys(picture_path)
+
+
 
 # 10 Select State(first), then select City (Click the visible container)
 
 
 # 11 check if enabled then click Submit, scrolling might be needed
-# driver.execute_script("arguments[0].scrollIntoView();", elem)
-# driver.execute_script("arguments[0].click;", elem)
+submit_button = driver.find_element(By.XPATH, submit_xpath)
+driver.execute_script("arguments[0].scrollIntoView();", submit_button)
+driver.execute_script("arguments[0].click;", submit_button)
+time.sleep(20)
 
 print('*************COMPLETED, Closing the BROWSER!!!!')
-driver.close()
-# driver.quit() # close the browser
+# driver.close()  # close the current tab
+driver.quit() # close the browser
