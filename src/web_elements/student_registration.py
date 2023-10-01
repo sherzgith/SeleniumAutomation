@@ -13,6 +13,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from src.utilities import *
 
@@ -154,10 +156,13 @@ select_picture.send_keys(picture_path)
 
 
 # 11 check if enabled then click Submit, scrolling might be needed
-submit_button = driver.find_element(By.XPATH, submit_xpath)
+# submit_button = driver.find_element(By.XPATH, submit_xpath)
+wdwait = WebDriverWait(driver, 10)
+submit_button = wdwait.until(EC.element_to_be_clickable((By.XPATH, submit_xpath)))
+
 driver.execute_script("arguments[0].scrollIntoView();", submit_button)
 driver.execute_script("arguments[0].click;", submit_button)
-time.sleep(20)
+time.sleep(10)
 
 print('*************COMPLETED, Closing the BROWSER!!!!')
 # driver.close()  # close the current tab
