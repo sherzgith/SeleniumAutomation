@@ -1,2 +1,4 @@
 temp
 .idea/
+.pytest_cache/
+__pycashe__/
