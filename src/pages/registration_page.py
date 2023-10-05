@@ -1,7 +1,7 @@
 
+
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support import expected_conditions as EC
-
 from src.pages.base_page import BasePage
 from src.utilities import *
 

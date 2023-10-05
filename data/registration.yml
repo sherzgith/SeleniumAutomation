@@ -1,5 +1,7 @@
-scenario1:
+case1:
+	host: 'https://demoqa.com/automation-practice-form'
+	first_name: 'john'
+	last_name: 'doe'
+	email: 'johndoe@email.com'
 	mobilenumber: "7024586932"
 
-scenario2:
-	mobilenumber: "7024587891"
