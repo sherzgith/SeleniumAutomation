@@ -3,15 +3,17 @@ import pytest
 print('Starting the sample test scenario...')
 
 
-@pytest.fixture(scope='module')
-def greet():
-    print("-\n---------------------SetUp-------------------")
-    print('Hello Test Master!')
-    yield [2, 3, 4]
-    print("\n-------------------TearDown-------------------")
-    print("fixture steps are completed here.")
+# Below lines are commented after transferring the steps to conftest.py file
+# @pytest.fixture(scope='module')
+# def greet():
+#     print("-\n---------------------SetUp-------------------")
+#     print('Hello Test Master!')
+#     yield [2, 3, 4]
+#     print("\n-------------------TearDown-------------------")
+#     print("fixture steps are completed here.")
 
 
+@pytest.mark.regression
 @pytest.mark.smoketest
 @pytest.mark.scen1
 def test_scen1_case1(greet):
@@ -22,6 +24,7 @@ def test_scen1_case1(greet):
     assert 'hello' == 'hello'
 
 
+@pytest.mark.regression
 @pytest.mark.scen1
 @pytest.mark.smoketest
 @pytest.mark.scen1case2

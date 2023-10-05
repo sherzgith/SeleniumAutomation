@@ -1,7 +1,7 @@
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
-
+from selenium.webdriver.support import expected_conditions as EC
 
 from src.utilities import *
 
@@ -16,7 +16,6 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wdwait = WebDriverWait(driver, 15)
-
 
     # enter text
     def enter_text_by_id(self, locator_id, text_to_enter):
@@ -43,7 +42,6 @@ class BasePage:
             screenshot = ROOT_DIR + '/reports/screenshots/enter_text_by_xpath_error.png'
             self.driver.save_screenshot(screenshot)
             log.warning(f"please check the screenshot here: {screenshot}")
-
 
     # click element
 
