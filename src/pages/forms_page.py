@@ -34,6 +34,7 @@ class FormsPage(BasePage):
     # Element : <input id="uploadPicture" type="file" lang"en" class="form-control-file">
     upload_picture_xpath = '//input[@id="uploadPicture"]'
     address_textarea = 'currentAddress'
+    state_list = 'state'
     state_input = 'react-select-3-input'
     city_list = 'city'
     city_input = 'react-select-4-input'
@@ -119,7 +120,7 @@ class FormsPage(BasePage):
         log.info('Is State list is enabled before selecting state?',
                  self.driver.find_element(By.ID, self.state_list).is_selected())
 
-        self.enter_text_by_id(self.state_input, ('NCR' + Keys.TAB))
+        self.enter_text_by_id(self.state_input, (city + Keys.TAB))
         log.info("state is entered.")
         time.sleep(2)
         log.info('Is City list is enabled after selecting state?',
